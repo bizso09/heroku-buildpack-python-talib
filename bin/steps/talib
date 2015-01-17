@@ -41,7 +41,7 @@ if (grep -iq -e "TA-Lib" $REQ_TXT) then
   export LD_LIBRARY_PATH=$(pwd)/python/lib:$(pwd)/vendor/lib:$(pwd)/vendor/lib/libta
 
   puts-step "Installing prebuilt python-talib package"
-  git clone --quite ${VENDORED_PY_TALIB}
+  git clone --quiet ${VENDORED_PY_TALIB}
 
   #puts-step "Downloading TA-Lib Python wrapper and its dependencies (numpy & Cython)."
   #pip install numpy
