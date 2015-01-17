@@ -150,6 +150,9 @@ mkdir -p $(dirname $PROFILE_PATH)
 # Install Python.
 source $BIN_DIR/steps/python
 
+# Install Numpy-Scipy
+source $BIN_DIR/steps/numpy-scipy
+
 # Install TA-Lib
 source $BIN_DIR/steps/talib
 
