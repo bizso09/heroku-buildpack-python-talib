@@ -9,6 +9,8 @@
 #
 # This script is invoked by [`bin/compile`](/).
 
+VENDORED_PY_TALIB="git://github.com/bizso09/talib-binaries.git"
+
 VENDORED_GIT_NAME="talib-binaries"
 VENDORED_GIT_REPO="git://github.com/aneesh-neelam/${VENDORED_GIT_NAME}.git"
 # The location of the pre-compiled TA-Lib binaries.
@@ -38,11 +40,15 @@ if (grep -iq -e "TA-Lib" $REQ_TXT) then
   export LIBRARY_PATH=$(pwd)/python/lib:$(pwd)/vendor/lib:$(pwd)/vendor/lib/libta
   export LD_LIBRARY_PATH=$(pwd)/python/lib:$(pwd)/vendor/lib:$(pwd)/vendor/lib/libta
 
-  puts-step "Downloading TA-Lib Python wrapper and its dependencies (numpy & Cython)."
-  pip install numpy
-  pip install Cython
+  puts-step "Installing prebuilt python-talib package"
+  git clone --quite ${VENDORED_PY_TALIB}
+
+  #puts-step "Downloading TA-Lib Python wrapper and its dependencies (numpy & Cython)."
+  #pip install numpy
+  #pip install Cython
   
-  easy_install TA-Lib
+  #unzip ${VENDORED_PY_TALIB}
+  
 
   # Move everything from venv directory to python directory
   if [ -d "venv" ]; then
