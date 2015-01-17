@@ -41,18 +41,18 @@ if (grep -iq -e "TA-Lib" $REQ_TXT) then
   export LIBRARY_PATH=$(pwd)/python/lib:$(pwd)/vendor/lib:$(pwd)/vendor/lib/libta
   export LD_LIBRARY_PATH=$(pwd)/python/lib:$(pwd)/vendor/lib:$(pwd)/vendor/lib/libta
   
-  if [ -d ${VENDORED_GIT_NAME} ]; then
-    rm -rf ${VENDORED_GIT_NAME}
-  fi
+  #if [ -d ${VENDORED_GIT_NAME} ]; then
+  rm -rf ${VENDORED_GIT_NAME}
+  #fi
   
   puts-step "Installing prebuilt python-talib package"
   git clone --quiet ${VENDORED_PY_TALIB}
 
   
-  if [ -d ${VENDORED_GIT_NAME} ]; then
-    cp -a ${VENDORED_GIT_NAME}/venv/* venv/  
-    rm -rf ${VENDORED_GIT_NAME}
-  fi
+  #if [ -d ${VENDORED_GIT_NAME} ]; then
+  cp -a ${VENDORED_GIT_NAME}/venv/* venv/  
+  rm -rf ${VENDORED_GIT_NAME}
+  #fi
 
   #puts-step "Downloading TA-Lib Python wrapper and its dependencies (numpy & Cython)."
   #pip install numpy
@@ -62,10 +62,10 @@ if (grep -iq -e "TA-Lib" $REQ_TXT) then
   
 
   # Move everything from venv directory to python directory
-  if [ -d "venv" ]; then
-    cp -a venv/* python/
-    rm -r venv
-  fi
+  #if [ -d "venv" ]; then
+  cp -a venv/* python/
+  rm -r venv
+  #fi
 
 
   cd ..
